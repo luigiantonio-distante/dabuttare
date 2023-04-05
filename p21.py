@@ -6,5 +6,5 @@ cont=0
 for z in l:
     if z>30:
         cont+=1
-print(l)
+print(l) 
 print(cont)
