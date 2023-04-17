@@ -6,13 +6,13 @@ def estrae(lista):
     return lista[i]
 def creaParola(lun):
     s=''
-    inizio=randint(0,1)
+    inizio=randint(0,2)
     if inizio==0:
         for x in range(lun//2):
-            s = s + estrae(conson) + estrae(vocali)
+            s = s + estrae(vocali) + estrae(conson)
     else:
         for x in range(lun//2):
-            s = s + estrae(vocali) + estrae(conson)
+            s = s + estrae(conson) + estrae(vocali)
     return s
 def main():
     parola = creaParola(6)
