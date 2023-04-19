@@ -37,6 +37,7 @@ class IO:
     def mostramenu(self):
         print("1. Nuovo")
         print("2. Lista")
+        print("3. Salva")
         print("0. Uscita")
     def leggiScelta(self):
         return input("> ")
