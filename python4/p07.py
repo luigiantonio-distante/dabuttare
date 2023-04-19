@@ -2,11 +2,13 @@ import json
 db={
     'rubrica':[
             {
+                'id':1,
                 'nome':'LUIGI',
                 'cognome':'DISTANTE',
                 'telefono':'3914949389'
             },
             {
+                'id':2,
                 'nome':'ADELE',
                 'cognome':'CASTRI',
                 'telefono':'3208787345'
@@ -34,12 +36,23 @@ class Repository:
     def registra(self):
         with open("filejson.json","w") as outfile:
             json.dump(db, outfile)
-
+    def filtro(self, contatto:Contatto):
+        lista=list()
+        for c in self.dati['rubrica']:
+            if ((c['nome']==contatto.nome or len(contatto.nome) == 0)
+                and
+                (c['cognome']==contatto.cognome or len(contatto.cognome) == 0)
+                and
+                (c['telefono']==contatto.telefono or len(contatto.telefono) == 0)):
+                lista.append(c)
+        return lista
+    
 class IO:
     def mostramenu(self):
         print("1. Nuovo")
         print("2. Lista")
         print("3. Salva")
+        print("4. Ricerca")
         print("0. Uscita")
     def leggiScelta(self):
         return input("> ")
@@ -68,6 +81,10 @@ def main():
             io.elenco(lista)
         if scelta=='3':
             repository.registra()
+        if scelta=='4':
+            contatto = io.acqContatto()
+            listaFiltrata = repository.filtro(contatto)
+            io.elenco(listaFiltrata)
         io.mostramenu()
         scelta=io.leggiScelta()
 
