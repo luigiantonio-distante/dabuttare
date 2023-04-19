@@ -1,3 +1,4 @@
+import json
 db={
     'rubrica':[
             {
@@ -28,6 +29,10 @@ class Repository:
         self.dati['rubrica'].append(dizContatto)
     def lista(self):
         return self.dati['rubrica']
+    def registra(self):
+        with open("filejson.json","w") as outfile:
+            json.dump(db, outfile)
+
 class IO:
     def mostramenu(self):
         print("1. Nuovo")
@@ -57,6 +62,8 @@ def main():
         if scelta=='2':
             lista=repository.lista()
             io.elenco(lista)
+        if scelta=='3':
+            repository.registra()
         io.mostramenu()
         scelta=io.leggiScelta()
 
