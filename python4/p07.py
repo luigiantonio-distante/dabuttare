@@ -1,4 +1,5 @@
 import json
+
 db={
     'rubrica':[
             {
@@ -15,6 +16,16 @@ db={
             }
     ]
 }
+
+class Criteri:
+    def ricercaContatto(c,contatto):
+        return ((c['nome']==contatto.nome or len(contatto.nome) == 0)
+                and
+                (c['cognome']==contatto.cognome or len(contatto.cognome) == 0)
+                and
+                (c['telefono']==contatto.telefono or len(contatto.telefono) == 0)):
+
+                        
 class Contatto:
     def __init__(self,nome="", cognome="", telefono="") -> None:
         self.nome=nome
@@ -46,7 +57,11 @@ class Repository:
                 (c['telefono']==contatto.telefono or len(contatto.telefono) == 0)):
                 lista.append(c)
         return lista
-    
+    def filtroFunction(self, contatto, f):
+        lista=list()
+        for c in self.dati['rubrica']:
+            if (f(c,contatto)):
+                lista.append(c)
 class IO:
     def mostramenu(self):
         print("1. Nuovo")
@@ -83,7 +98,7 @@ def main():
             repository.registra()
         if scelta=='4':
             contatto = io.acqContatto()
-            listaFiltrata = repository.filtro(contatto)
+            listaFiltrata = repository.filtroFunction(contatto, Criteri.ricercaContatto)
             io.elenco(listaFiltrata)
         io.mostramenu()
         scelta=io.leggiScelta()
