@@ -23,7 +23,7 @@ class Criteri:
                 and
                 (c['cognome']==contatto.cognome or len(contatto.cognome) == 0)
                 and
-                (c['telefono']==contatto.telefono or len(contatto.telefono) == 0)):
+                (c['telefono']==contatto.telefono or len(contatto.telefono) == 0))
 
                         
 class Contatto:
