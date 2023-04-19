@@ -20,7 +20,7 @@ class Contatto:
         self.telefono=telefono
 class Repository:
     def load(self):
-        self.db=json.load(open("filejson.json"))
+        self.dati=json.load(open("filejson.json"))
     def __init__(self, dati):
         self.dati=dati    
     def regContatto(self, contatto:Contatto):
