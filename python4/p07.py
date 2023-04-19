@@ -19,6 +19,8 @@ class Contatto:
         self.cognome=cognome
         self.telefono=telefono
 class Repository:
+    def load(self):
+        self.db=json.load(open("filejson.json"))
     def __init__(self, dati):
         self.dati=dati    
     def regContatto(self, contatto:Contatto):
@@ -54,6 +56,7 @@ class IO:
 def main():
     io=IO()
     repository=Repository(db)
+    repository.load()
     io.mostramenu()
     scelta=io.leggiScelta()
     while scelta != '0':
