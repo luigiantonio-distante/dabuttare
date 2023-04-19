@@ -62,6 +62,7 @@ class Repository:
         for c in self.dati['rubrica']:
             if (f(c,contatto)):
                 lista.append(c)
+        return lista
 class IO:
     def mostramenu(self):
         print("1. Nuovo")
@@ -99,7 +100,10 @@ def main():
         if scelta=='4':
             contatto = io.acqContatto()
             listaFiltrata = repository.filtroFunction(contatto, Criteri.ricercaContatto)
-            io.elenco(listaFiltrata)
+            if len(listaFiltrata)>0:
+                io.elenco(listaFiltrata)
+            else:
+                print("Nessun contatto trovato")
         io.mostramenu()
         scelta=io.leggiScelta()
 
