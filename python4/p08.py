@@ -14,8 +14,8 @@ db={
             },
             {
                 'targa':'GD898DD',
-                'modello':'ALFA ROMEO',
-                'marca':'159'
+                'modello':'159',
+                'marca':'ALFA ROMEO'
             },
             {
                 'targa':'FG555CC',
@@ -29,8 +29,8 @@ db={
             },
             {
                 'targa':'GA787FF',
-                'modello':'ALFA ROMEO',
-                'marca':'159'
+                'modello':'159',
+                'marca':'ALFA ROMEO'
             }
     ],
     'clienti':[
